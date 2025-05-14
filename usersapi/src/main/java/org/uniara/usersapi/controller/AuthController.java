@@ -2,10 +2,7 @@ package org.uniara.usersapi.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import org.uniara.usersapi.DTOs.LoginUserDTO;
 import org.uniara.usersapi.constant.Constant;
@@ -36,7 +33,7 @@ public class AuthController {
     }
 
     @PostMapping(Constant.API_AUTH + "/validate")
-    public boolean validate(@RequestParam("Authorization") String token) {
-        return jwtTokenProvider.validateToken(token);
+    public boolean validate(@RequestHeader("Authorization") String token) {
+        return jwtTokenProvider.validateToken(token.replace("Bearer ", ""));
     }
 }
