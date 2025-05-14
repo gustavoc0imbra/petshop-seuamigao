@@ -1,4 +1,4 @@
-package org.uniara.productscatalogapi;
+package org.uniara.usersapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

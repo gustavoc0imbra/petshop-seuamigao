@@ -1,4 +1,4 @@
-package org.uniara.productscatalogapi;
+package org.uniara.usersapi;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;

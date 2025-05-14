@@ -1,9 +1,9 @@
-package org.uniara.productscatalogapi.service;
+package org.uniara.usersapi.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.uniara.productscatalogapi.model.User;
-import org.uniara.productscatalogapi.repository.UserRepository;
+import org.uniara.usersapi.model.User;
+import org.uniara.usersapi.repository.UserRepository;
 
 import java.util.List;
 import java.util.Optional;
