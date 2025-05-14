@@ -6,7 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@OpenAPIDefinition(info = @Info(title = "Products catalog API - PetShop", version = "1.0", description = "API to manage/read products catalog"))
+@OpenAPIDefinition(info = @Info(title = "Users API - PetShop", version = "1.0", description = "API to manage/read users and provide the JWT"))
 public class UsersapiApplication {
 
 	public static void main(String[] args) {
