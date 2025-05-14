@@ -1,0 +1,26 @@
+services:
+  productscatalogapi:
+    build: ./productscatalogapi/
+    container_name: "productscatalogapi"
+    ports:
+      - 8080:8080
+    depends_on:
+      - productscatalog-mysql
+    networks:
+      - petshop_network
+  productscatalog-mysql:
+    image: mysql:8.0.30
+    container_name: "productscatalog-mysql"
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db_products
+    volumes:
+      - ./db-init:/docker-entrypoint-initdb.d
+    networks:
+      - petshop_network
+
+networks:
+  petshop_network:
+    driver: bridge
