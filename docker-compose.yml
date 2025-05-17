@@ -17,6 +17,15 @@ services:
       - users-mysql
     networks:
       - petshop_network
+  ordersapi:
+    build: ./ordersapi/
+    container_name: "ordersapi"
+    ports:
+      - 8082:8082
+    depends_on:
+      - orders-mysql
+    networks:
+      - petshop_network
   productscatalog-mysql:
     image: mysql:8.0.30
     container_name: "productscatalog-mysql"
@@ -37,6 +46,16 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: db_users
+    networks:
+      - petshop_network
+  orders-mysql:
+    image: mysql:8.0.30
+    container_name: "orders-mysql"
+    ports:
+      - 3308:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db_orders
     networks:
       - petshop_network
 

@@ -1,1 +1,1 @@
-CREATE DATABASE db_products;
+CREATE DATABASE db_orders;
