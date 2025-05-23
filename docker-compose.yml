@@ -26,6 +26,15 @@ services:
       - orders-mysql
     networks:
       - petshop_network
+  paymentsapi:
+    build: ./paymentsapi/
+    container_name: "paymentsapi"
+    ports:
+      - 8083:8083
+    depends_on:
+      - payments-mysql
+    networks:
+      - petshop_network
   productscatalog-mysql:
     image: mysql:8.0.30
     container_name: "productscatalog-mysql"
@@ -56,6 +65,16 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: db_orders
+    networks:
+      - petshop_network
+  payments-mysql:
+    image: mysql:8.0.30
+    container_name: "payments-mysql"
+    ports:
+      - 3309:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db_payments
     networks:
       - petshop_network
 
