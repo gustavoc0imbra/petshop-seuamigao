@@ -1,4 +1,9 @@
 services:
+  petshopfrontend:
+    build: ./petshop-front/
+    container_name: "petshopfrontend"
+    ports:
+      - 80:80
   productscatalogapi:
     build: ./productscatalogapi/
     container_name: "productscatalogapi"

@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.uniara.ordersapi.constant.Constant;
 import org.uniara.ordersapi.model.Order;
+import org.uniara.ordersapi.model.OrderProduct;
 import org.uniara.ordersapi.service.OrderService;
 
 import java.util.List;
@@ -28,6 +29,12 @@ public class OrderController {
 
     @PostMapping(Constant.API_ORDERS_URL)
     public ResponseEntity<Order> save(/*@RequestHeader("Authorization") String token,*/ @RequestBody Order order) {
+        System.out.println(order.toString());
+
+        if (order.getOrderProducts().isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+
         return ResponseEntity.status(HttpStatus.CREATED).body(orderService.save(order));
     }
 
@@ -36,7 +43,7 @@ public class OrderController {
         return ResponseEntity.ok(orderService.save(order));
     }
 
-    @DeleteMapping(Constant.API_ORDERS_URL + "{id}")
+    @DeleteMapping(Constant.API_ORDERS_URL + "/{id}")
     public ResponseEntity<Order> delete(/*@RequestHeader("Authorization") String token,*/ @PathVariable("id") Long id) {
         orderService.deleteById(id);
         return ResponseEntity.noContent().build();

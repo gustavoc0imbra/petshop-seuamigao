@@ -6,7 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@OpenAPIDefinition(info = @Info(title = "Orders API - PetShop", version = "1.0", description = "API to manage/read orders"))
+@OpenAPIDefinition(info = @Info(title = "Payments API - PetShop", version = "1.0", description = "API to manage/read orders payments"))
 public class PaymentsApiApplication {
 
 	public static void main(String[] args) {

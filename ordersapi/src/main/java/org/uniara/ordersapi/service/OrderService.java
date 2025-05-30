@@ -13,6 +13,9 @@ public class OrderService {
     @Autowired
     private OrderRepository orderRepository;
 
+    /*@Autowired
+    private OrderProductRepository orderProductRepository;*/
+
     public List<Order> findAll() {
         return orderRepository.findAll();
     }
@@ -22,6 +25,16 @@ public class OrderService {
     }
 
     public Order save(Order order) {
+
+        /*List<OrderProduct> orderProducts = order.getOrderProducts();
+
+        order = orderRepository.save(order);
+
+        for (OrderProduct orderProduct : orderProducts) {
+            orderProduct.setOrder(order);
+            orderProductRepository.save(orderProduct);
+        }*/
+
         return orderRepository.save(order);
     }
 

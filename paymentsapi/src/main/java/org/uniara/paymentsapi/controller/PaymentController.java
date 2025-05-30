@@ -36,7 +36,7 @@ public class PaymentController {
         return ResponseEntity.ok(paymentService.save(payment));
     }
 
-    @DeleteMapping(Constant.API_PAYMENTS_URL + "{id}")
+    @DeleteMapping(Constant.API_PAYMENTS_URL + "/{id}")
     public ResponseEntity<Payment> delete(/*@RequestHeader("Authorization") String token,*/ @PathVariable("id") Long id) {
         paymentService.deleteById(id);
         return ResponseEntity.noContent().build();

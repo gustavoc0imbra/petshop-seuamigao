@@ -1,11 +1,11 @@
 package org.uniara.productscatalogapi.controller;
 
-import org.apache.tomcat.util.bcel.Const;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.uniara.productscatalogapi.constant.Constant;
+import org.uniara.productscatalogapi.consumers.AuthConsumer;
 import org.uniara.productscatalogapi.model.Product;
 import org.uniara.productscatalogapi.service.ProductService;
 
@@ -17,8 +17,15 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+    private AuthConsumer authConsumer = new AuthConsumer();
+
     @GetMapping(Constant.API_PRODUCTS_URL)
-    public ResponseEntity<List<Product>> findAll(/*@RequestHeader("Authorization") String token*/) {
+    public ResponseEntity<List<Product>> findAll(@RequestHeader("Authorization") String token) {
+
+        /*if (!authConsumer.isAuthenticated(token)) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }*/
+
         return ResponseEntity.ok(productService.findAll());
     }
 
@@ -37,7 +44,7 @@ public class ProductController {
         return ResponseEntity.ok(productService.save(product));
     }
 
-    @DeleteMapping(Constant.API_PRODUCTS_URL + "{id}")
+    @DeleteMapping(Constant.API_PRODUCTS_URL + "/{id}")
     public ResponseEntity<Product> delete(/*@RequestHeader("Authorization") String token,*/ @PathVariable("id") Long id) {
         productService.deleteById(id);
         return ResponseEntity.noContent().build();
