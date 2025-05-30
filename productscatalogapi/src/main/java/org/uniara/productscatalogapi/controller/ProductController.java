@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class ProductController {
     @Autowired
     private ProductService productService;
@@ -20,7 +21,7 @@ public class ProductController {
     private AuthConsumer authConsumer = new AuthConsumer();
 
     @GetMapping(Constant.API_PRODUCTS_URL)
-    public ResponseEntity<List<Product>> findAll(@RequestHeader("Authorization") String token) {
+    public ResponseEntity<List<Product>> findAll(/*@RequestHeader("Authorization") String token*/) {
 
         /*if (!authConsumer.isAuthenticated(token)) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();

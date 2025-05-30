@@ -14,6 +14,7 @@ import org.uniara.usersapi.service.UserService;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class AuthController {
     @Autowired
     private JwtTokenProvider jwtTokenProvider;
@@ -29,7 +30,7 @@ public class AuthController {
         }
 
         String token = jwtTokenProvider.generateToken(user.getEmail());
-        return new ResponseToken("Autenticado!", token);
+        return new ResponseToken(userFound.get(), token);
     }
 
     @PostMapping(Constant.API_AUTH + "/validate")

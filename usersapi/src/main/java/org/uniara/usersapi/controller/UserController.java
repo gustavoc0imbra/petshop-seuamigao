@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class UserController {
     @Autowired
     private UserService userService;
@@ -41,12 +42,8 @@ public class UserController {
     }
 
     @PostMapping(Constant.API_USERS)
-    public ResponseEntity<User> save(@RequestHeader("Authorization") String token, @RequestBody User user) {
-
-        if (!jwtTokenProvider.validateToken(token.replace("Bearer ", ""))) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
-
+    public ResponseEntity<User> save(/*@RequestHeader("Authorization") String token,*/ @RequestBody User user) {
+        user.setStatus(true);
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(user));
     }
 

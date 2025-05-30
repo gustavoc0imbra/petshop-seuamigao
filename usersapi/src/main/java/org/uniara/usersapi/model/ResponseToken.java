@@ -7,6 +7,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter @Setter
 public class ResponseToken {
-    private String message;
+    private User user;
     private String token;
 }
