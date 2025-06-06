@@ -8,17 +8,16 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.uniara.usersapi.model.User;
 import org.uniara.usersapi.repository.UserRepository;
-import org.uniara.usersapi.service.UserService;
 
 @SpringBootApplication
 @OpenAPIDefinition(info = @Info(title = "Users API - PetShop", version = "1.0", description = "API to manage/read users and provide the JWT"))
-public class UsersapiApplication implements CommandLineRunner {
+public class UsersApiApplication implements CommandLineRunner {
 
 	@Autowired
 	private UserRepository userRepository;
 
 	public static void main(String[] args) {
-		SpringApplication.run(UsersapiApplication.class, args);
+		SpringApplication.run(UsersApiApplication.class, args);
 	}
 
 	@Override

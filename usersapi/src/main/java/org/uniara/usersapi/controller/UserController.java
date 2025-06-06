@@ -42,7 +42,7 @@ public class UserController {
     }
 
     @PostMapping(Constant.API_USERS)
-    public ResponseEntity<User> save(/*@RequestHeader("Authorization") String token,*/ @RequestBody User user) {
+    public ResponseEntity<User> save(@RequestBody User user) {
         user.setStatus(true);
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(user));
     }

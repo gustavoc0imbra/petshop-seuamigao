@@ -19,6 +19,6 @@ public class Order {
     private Long userId;
     private Date orderDate;
     private char status;
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderProduct> orderProducts;
 }
