@@ -22,7 +22,7 @@ public class AuthConsumer {
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(AUTH_URL))
-                .header("Authorization", "Bearer " + token)
+                .header("Authorization", token)
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 
