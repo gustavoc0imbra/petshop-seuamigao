@@ -6,7 +6,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class AuthConsumer {
-    private final String AUTH_URL = "http://localhost:8081/api/v0/auth/validate";
+    private final String AUTH_URL = "http://usersapi:8081/api/v0/auth/validate";
     private boolean isAuthenticated;
 
     public boolean isAuthenticated(String token) {
