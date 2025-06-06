@@ -5,6 +5,7 @@ import { Box, Button, Card, CardContent, CardMedia, Typography } from "@mui/mate
 import { AddShoppingCart } from "@mui/icons-material";
 import { useParams } from "react-router";
 import feed from "../assets/feed.jpg";
+import catFeed from "../assets/cat_feed.jpg";
 import { addCartItem } from "../services/cartService";
 
 export default function Product() {
@@ -56,7 +57,7 @@ export default function Product() {
                                 maxHeight: "250px",
                                 flex: 1
                             }}
-                            image={feed}
+                            image={product.id % 2 === 0 ? feed : catFeed}
                         />
                         <CardContent sx={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-around" }}>
                             <Box>

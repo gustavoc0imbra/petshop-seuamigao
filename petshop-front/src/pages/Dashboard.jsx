@@ -4,6 +4,7 @@ import BaseLayout from "../layouts/BaseLayout";
 import { Box, Card, CardActionArea, CardActions, CardContent, CardHeader, CardMedia, Container, IconButton, Typography } from "@mui/material";
 import { AddShoppingCart } from "@mui/icons-material";
 import feed from "../assets/feed.jpg";
+import catFeed from "../assets/cat_feed.jpg";
 import { useNavigate } from "react-router";
 
 export default function Dashboard() {
@@ -54,7 +55,7 @@ export default function Dashboard() {
                                                     width: "270px",
                                                     maxHeight: "250px"
                                                 }}
-                                                image={feed}
+                                                image={product.id % 2 === 0 ? feed : catFeed}
                                             />
                                             <CardHeader
                                                 title={product.name}
