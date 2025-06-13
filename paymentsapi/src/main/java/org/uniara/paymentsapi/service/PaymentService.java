@@ -1,5 +1,7 @@
 package org.uniara.paymentsapi.service;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.uniara.paymentsapi.model.Payment;
@@ -12,12 +14,20 @@ import java.util.Optional;
 public class PaymentService {
     @Autowired
     private PaymentRepository paymentRepository;
+    private Logger LOGGER = LogManager.getLogger();
 
     public List<Payment> findAll() {
         return paymentRepository.findAll();
     }
 
     public Optional<Payment> findById(Long id) {
+
+        Optional<Payment> payment = paymentRepository.findById(id);
+
+        if (payment.isEmpty()) {
+            LOGGER.warn("Pagamento não encontrado");
+        }
+
         return paymentRepository.findById(id);
     }
 

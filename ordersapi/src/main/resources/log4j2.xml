@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns="https://logging.apache.org/xml/ns"
+               xsi:schemaLocation="
+                       https://logging.apache.org/xml/ns
+                       https://logging.apache.org/xml/ns/log4j-config-2.xsd">
+
+    <Appenders>
+        <Console name="CONSOLE" target="SYSTEM_OUT">
+            <PatternLayout pattern="%highlight{%d [%level]} - %msg%n"/>
+        </Console>
+        <File name="FILE" fileName="logs.json">
+            <JsonTemplateLayout eventTemplateUri="classpath:log-structure.json" />
+        </File>
+        <File name="TEXT_FILE" fileName="logs.txt">
+            <PatternLayout pattern="%highlight{%d [%level]} - %msg%n"/>
+        </File>
+    </Appenders>
+
+    <Loggers>
+        <!--
+            DEBUG - Exibe toda trace
+            INFO - Só uma informação para indicar algo
+            WARNING - Aviso, pra ficar atento
+            ERROR - Quase crítico, porém depende uma certa atenção
+        -->
+        <Logger name="org.uniara.ordersapi" level="INFO"/> <!-- Configura o pacote vai estar logando evento das classes e a partir qual level será aceito -->
+        <Root level="WARN"> <!-- Desde que não configurado, logs de nível Warn acima serão aceitos. Serve como logger default -->
+            <AppenderRef ref="CONSOLE"/>
+            <!--<AppenderRef ref="FILE" />-->
+            <AppenderRef ref="TEXT_FILE" />
+        </Root>
+    </Loggers>
+
+</Configuration>

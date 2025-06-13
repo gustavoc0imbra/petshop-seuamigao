@@ -33,11 +33,11 @@ export default function BaseLayout({ children }) {
   const theme = createTheme();
 
   const handleCartOpen = () => {
-    const products = getCartItems();
+    /* const products = getCartItems(); */
 
-    if (products) {
+    /* if (products) {
       setCartProducts(products);
-    }
+    } */
 
     setCartOpen(true);
   };
