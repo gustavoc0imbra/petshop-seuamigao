@@ -1,4 +1,4 @@
-# Petshop- Seu Amigão 🐶🐱
+![image](https://github.com/user-attachments/assets/2f03c42e-f6de-43b5-82a5-251763c21ebe)# Petshop- Seu Amigão 🐶🐱
 
 O Petshop - Seu Amigão é um e-commerce para vender produtos relacionados a pets.
 
@@ -14,7 +14,14 @@ O Petshop - Seu Amigão é um e-commerce para vender produtos relacionados a pet
 - Java (JDK 17)
 - SpringBoot
 - React
+- JS
 - MySQLs
+
+## Requisitos para rodar:
+- Docker instalado
+- Docker compose instalado
+- JDK 17
+- Node e NPM (caso opte rodar o frontend sem ser em um container
 
 ## Como instalar e rodar (com docker):
 - Clonar este repositório deseja
@@ -26,19 +33,24 @@ git clone
 cd petshop-seuamigao
 docker-compose up -d
 ```
-- Após executado os serviços estarão disponíveis nas portas abaixo:
+- Após executado todos os serviços (incluindo frontend) estarão disponíveis nas portas abaixo:
+
+> [!NOTE]
+> O projeto frontend também é possivel ser executado sem estar no docker caso deseje
+> Para fazer isto basta acessar a pasta do projeto `petshop-front` via terminal: `cd petshop-front`
+> E rodar o comando (assumindo que o node e npm já tenha previamente instalado): `npm install && npm run dev`
 
 ## Portas utilizadas pelos serviços:
 | API | Porta |
 | --- | ----- |
-| petshopfrontend | 80 |
-| productscatalogapi | 8080 |
+| petshopfrontend | [80](http://localhost:80) |
+| productscatalogapi | [8080](http://localhost:8080/api/docs) |
 | productscatalog-mysql | 3306 |
-| usersapi (Autenticação e Usuários) | 8081 |
+| usersapi (Autenticação e Usuários) | [8081](http://localhost:8081/api/docs) |
 | users-mysql | 3307 |
-| ordersapi | 8082 |
+| ordersapi | [8082](http://localhost:8082/api/docs) |
 | orders-mysql | 3308 |
-| paymentsapi | 8083 |
+| paymentsapi | [8083](http://localhost:8083/api/docs) |
 | payments-mysql | 3309 |
 
 > [!NOTE]
@@ -59,6 +71,29 @@ docker-compose up -d
 - Registrar-se (ao cadastrar-se é feito login automaticamente):
 ![image](https://github.com/user-attachments/assets/ced41883-4ad8-46b5-9db4-7555a5cfcc4c)
 
+> [!NOTE]
+> **(usersapi, productscatologapi e ordersapi precisam de autenticação via JWT em todos endpoints**
+> Exceto em alguns casos que será indicado qual não é preciso.
+
+### usersapi:
+- Prover uma API para cadastrar, buscar, excluir, atualizar os usuários do petshop
+- Prove também 2 enpoints para login e autenticação
+- **SOMENTE** o endpoint de POST para se registrar e login não necessita ser autenticado via JWT
+- Documentação com Swagger: ```http://localhost:8081/api/docs```
+
+### productscatalogapi:
+- Prover uma API para cadastrar, buscar, excluir, atualizar os produtos do petshop
+- **SOMENTE** o endpoint de buscar todos e buscar por id não necessita ser autenticado via JWT
+- Documentação com Swagger: ```http://localhost:8080/api/docs```
+
+### ordersapi:
+- Prover uma API para cadastrar, buscar, excluir, atualizar os pedidos do petshop
+- Documentação com Swagger: ```http://localhost:8082/api/docs```
+
+### paymentsapi:
+- Prover uma API para cadastrar, buscar, excluir, atualizar os pagamentos dos pedidos do petshop
+- Não possui autenticação com JWT
+- Documentação com Swagger: ```http://localhost:8083/api/docs```
 
 ## Diagrama arquitetura:
 ![arquitetura_prototipo](https://github.com/user-attachments/assets/4f5ce2dd-f03c-4f39-addd-6a254992552b)
