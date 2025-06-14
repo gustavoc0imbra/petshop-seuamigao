@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/2f03c42e-f6de-43b5-82a5-251763c21ebe)# Petshop- Seu Amigão 🐶🐱
+# Petshop- Seu Amigão 🐶🐱
 
 O Petshop - Seu Amigão é um e-commerce para vender produtos relacionados a pets.
 
@@ -36,8 +36,8 @@ docker-compose up -d
 - Após executado todos os serviços (incluindo frontend) estarão disponíveis nas portas abaixo:
 
 > [!NOTE]
-> O projeto frontend também é possivel ser executado sem estar no docker caso deseje
-> Para fazer isto basta acessar a pasta do projeto `petshop-front` via terminal: `cd petshop-front`
+> O projeto frontend também é possivel ser executado sem estar no docker caso deseje  
+> Para fazer isto basta acessar a pasta do projeto `petshop-front` via terminal: `cd petshop-front`  
 > E rodar o comando (assumindo que o node e npm já tenha previamente instalado): `npm install && npm run dev`
 
 ## Portas utilizadas pelos serviços:
@@ -52,6 +52,9 @@ docker-compose up -d
 | orders-mysql | 3308 |
 | paymentsapi | [8083](http://localhost:8083/api/docs) |
 | payments-mysql | 3309 |
+
+> [!NOTE]
+> `nomedoservico-mysql` representa o serviço de banco de dados MySQL relacionado ao serviço
 
 > [!NOTE]
 > Ao executar vem um usuário **padrão**  
